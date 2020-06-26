@@ -95,6 +95,7 @@ const buildQuery = (queryName, config) => {
       const { ctx, opts } = buildQueryContext({ options, graphqlContext });
 
       await policiesMiddleware(ctx);
+      graphqlContext.session = ctx.session;
       graphqlContext.context = ctx;
 
       return resolver(root, opts, graphqlContext, info);
